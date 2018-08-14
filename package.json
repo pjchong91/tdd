@@ -1,0 +1,18 @@
+{
+  "name": "tdd-playground",
+  "version": "1.0.0",
+  "description": "Learning how to write unit tests",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "P Chong ADP Student@RED Academy Q3.2018",
+  "license": "ISC",
+  "devDependencies": {
+    "jest-cli": "^23.5.0"
+  }
+}
