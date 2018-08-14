@@ -93,55 +93,102 @@
 //   });
 // });
 
-const stringCompression = require("../lib/string-compression.js");
+// const stringCompression = require("../lib/string-compression.js");
 
-describe("stringCompression", () => {
-  describe("letter followed by number", () => {
-    it("should have a pattern of letter and number", () => {
-      const result = stringCompression("aaa");
-      expect(result).toEqual("a3");
+// describe("stringCompression", () => {
+//   describe("letter followed by number", () => {
+//     it("should have a pattern of letter and number", () => {
+//       const result = stringCompression("aaa");
+//       expect(result).toEqual("a3");
+//     });
+//   });
+//   describe("when string contains spaces, punctuation and capitalization", () => {
+//     it("should ignore those and count letters", () => {
+//       const result = stringCompression("aaa---!!bBb++c");
+//       expect(result).toEqual("a3b3c1");
+//     });
+//   });
+//   describe("input at minimum is one letter", () => {
+//     it("should take a letter and output letter and number", () => {
+//       const result = stringCompression("a");
+//       expect(result).toEqual("a1");
+//     });
+//   });
+//   describe("input is an empty string", () => {
+//     it("should return 0", () => {
+//       const result = stringCompression("");
+//       expect(result).toEqual(0);
+//     });
+//   });
+//   describe("input is null", () => {
+//     it("should indicate a string is required", () => {
+//       const result = stringCompression(null);
+//       expect(result).toEqual("Requires a string");
+//     });
+//   });
+//   describe("input string contains numbers", () => {
+//     it("should throw an error", () => {
+//       const result = stringCompression("a7bcd");
+//       expect(result).toEqual(0);
+//     });
+//   });
+//   describe("input is not a string", () => {
+//     it("should throw an error", () => {
+//       const result = stringCompression(400);
+//       expect(result).toEqual(0);
+//     });
+//   });
+//   describe("repeated letters that exist at different parts in the sequence are not grouped together", () => {
+//     it("should separately identify characters that do not sit side by side but exist multiple times in the sequence", () => {
+//       const result = stringCompression("abba");
+//       expect(result).toEqual("a1b2a1");
+//     });
+//   });
+// });
+
+const firstUnique = require("../lib/first-unique.js");
+
+describe("firstUnique", () => {
+  describe("unique character shows up only once", () => {
+    it("unique character should not be repeated anywhere through the given string", () => {
+      const result = firstUnique("frof");
+      expect(result).toEqual("r");
     });
   });
   describe("when string contains spaces, punctuation and capitalization", () => {
     it("should ignore those and count letters", () => {
-      const result = stringCompression("aaa---!!bBb++c");
-      expect(result).toEqual("a3b3c1");
+      const result = firstUnique("aaa---!!bBb++c");
+      expect(result).toEqual("c");
     });
   });
   describe("input at minimum is one letter", () => {
-    it("should take a letter and output letter and number", () => {
-      const result = stringCompression("a");
-      expect(result).toEqual("a1");
+    it("should return the letter if only one letter is given", () => {
+      const result = firstUnique("a");
+      expect(result).toEqual("a");
     });
   });
   describe("input is an empty string", () => {
     it("should return 0", () => {
-      const result = stringCompression("");
+      const result = firstUnique("");
       expect(result).toEqual(0);
     });
   });
   describe("input is null", () => {
     it("should indicate a string is required", () => {
-      const result = stringCompression(null);
+      const result = firstUnique(null);
       expect(result).toEqual("Requires a string");
     });
   });
   describe("input string contains numbers", () => {
     it("should throw an error", () => {
-      const result = stringCompression("a7bcd");
+      const result = firstUnique("a7bcd");
       expect(result).toEqual(0);
     });
   });
   describe("input is not a string", () => {
     it("should throw an error", () => {
-      const result = stringCompression(400);
+      const result = firstUnique(400);
       expect(result).toEqual(0);
-    });
-  });
-  describe("repeated letters that exist at different parts in the sequence are not grouped together", () => {
-    it("should separately identify characters that do not sit side by side but exist multiple times in the sequence", () => {
-      const result = stringCompression("abba");
-      expect(result).toEqual("a1b2a1");
     });
   });
 });
