@@ -149,7 +149,7 @@
 const firstUnique = require("../lib/first-unique.js");
 
 describe("firstUnique", () => {
-  describe("unique character shows up only once", () => {
+  describe("string contains a unique character", () => {
     it("unique character should not be repeated anywhere through the given string", () => {
       const result = firstUnique("frof");
       expect(result).toEqual("r");
@@ -191,4 +191,33 @@ describe("firstUnique", () => {
       expect(result).toEqual(0);
     });
   });
+  describe("when string is all the same character", () => {
+    it("should return undefined", () => {
+      const result = firstUnique("fffffff");
+      expect(result).not.toBeUndefined();
+    });
+  });
 });
+
+// const lowestInteger = require("../lib/lowest-integer.js");
+
+// describe("lowestInteger", () => {
+//   describe("no integer possible between min-max", () => {
+//     it("should return the next highest integer", () => {
+//       const result = lowestInteger([1, 2, 3]);
+//       expect(result).toEqual(4);
+//     });
+//   });
+//   describe("integers in array are all the same", () => {
+//     it("should return the next highest integer", () => {
+//       const result = lowestInteger([1, 1, 1]);
+//       expect(result).toEqual(2);
+//     });
+//   });
+//   describe("integers are out of order", () => {
+//     it("should return the minimum integer possible", () => {
+//       const result = lowestInteger([2, 6, 3]);
+//       expect(result).toEqual(4);
+//     });
+//   });
+// });
