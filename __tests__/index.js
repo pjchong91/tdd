@@ -104,7 +104,7 @@ describe("stringCompression", () => {
   });
   describe("when string contains spaces, punctuation and capitalization", () => {
     it("should ignore those and count letters", () => {
-      const result = stringCompression("aaa---!!bbb++c");
+      const result = stringCompression("aaa---!!bBb++c");
       expect(result).toEqual("a3b3c1");
     });
   });
