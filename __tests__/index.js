@@ -47,48 +47,77 @@
 //   });
 // });
 
-const palindrome = require("../lib/palindrome.js");
-describe("palindrome", () => {
-  describe("when length less than or equal to one character", () => {
-    it("should return 'Needs more characters'", () => {
-      const result = palindrome("i");
-      expect(result).toEqual("Needs more characters");
+// const palindrome = require("../lib/palindrome.js");
+// describe("palindrome", () => {
+//   describe("when length less than or equal to one character", () => {
+//     it("should return 'Needs more characters'", () => {
+//       const result = palindrome("i");
+//       expect(result).toEqual("Needs more characters");
+//     });
+//   });
+//   describe("first letter matches last letter", () => {
+//     it("should return first and last letters match", () => {
+//       const result = palindrome("mom");
+//       expect(result).toEqual("Palindrome!");
+//     });
+//   });
+//   describe("allows for spaces", () => {
+//     it("should recognize palindrome despite spaces", () => {
+//       const result = palindrome("never odd or even");
+//       expect(result).toEqual("Palindrome!");
+//     });
+//   });
+//   describe("allows for punctuation", () => {
+//     it("should recognize palindrome despite punctuation", () => {
+//       const result = palindrome("race-car!");
+//       expect(result).toEqual("Palindrome!");
+//     });
+//   });
+//   describe("disregards capitalization", () => {
+//     it("should recognize palindrome despite capitalization", () => {
+//       const result = palindrome("Mom");
+//       expect(result).toEqual("Palindrome!");
+//     });
+//   });
+//   describe("is a palindrome", () => {
+//     it("same string resulted when read forward or backward", () => {
+//       const result = palindrome("RaCecar");
+//       expect(result).toEqual("Palindrome!");
+//     });
+//   });
+//   describe("is not a palindrome", () => {
+//     it("should recognize not a palindrome", () => {
+//       const result = palindrome("omoplata");
+//       expect(result).toEqual("Cheeseburgers");
+//     });
+//   });
+// });
+
+const stringCompression = require("../lib/string-compression.js");
+
+describe("stringCompression", () => {
+  describe("letter followed by number", () => {
+    it("should have a pattern of letter and number", () => {
+      const result = stringCompression("aaa");
+      expect(result).toEqual("a3");
     });
   });
-  describe("first letter matches last letter", () => {
-    it("should return first and last letters match", () => {
-      const result = palindrome("mom");
-      expect(result).toEqual("Palindrome!");
+  describe("input at minimum is one letter", () => {
+    it("should take a letter and output letter and number", () => {
+      const result = stringCompression("a");
+      expect(result).toEqual("a1");
     });
   });
-  describe("allows for spaces", () => {
-    it("should recognize palindrome despite spaces", () => {
-      const result = palindrome("never odd or even");
-      expect(result).toEqual("Palindrome!");
+  describe("input is null", () => {
+    it("should indicate a string is required", () => {
+      const result = stringCompression(null);
+      expect(result).toEqual("Requires a string");
     });
   });
-  describe("allows for punctuation", () => {
-    it("should recognize palindrome despite punctuation", () => {
-      const result = palindrome("race-car!");
-      expect(result).toEqual("Palindrome!");
-    });
-  });
-  describe("disregards capitalization", () => {
-    it("should recognize palindrome despite capitalization", () => {
-      const result = palindrome("Mom");
-      expect(result).toEqual("Palindrome!");
-    });
-  });
-  describe("is a palindrome", () => {
-    it("same string resulted when read forward or backward", () => {
-      const result = palindrome("RaCecar");
-      expect(result).toEqual("Palindrome!");
-    });
-  });
-  describe("is not a palindrome", () => {
-    it("should recognize not a palindrome", () => {
-      const result = palindrome("omoplata");
-      expect(result).toEqual("Cheeseburgers");
+  describe("repeated letters that exist at different parts in the sequence are not grouped together", () => {
+    it("should separately identify characters that do not sit side by side but exist multiple times in the sequence", () => {
+      const result = stringCompression("abba");
+      expect(result).toEqual("a1b2a1");
     });
   });
 });
