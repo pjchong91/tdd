@@ -297,4 +297,10 @@ describe("editChecker", () => {
       expect(result).toEqual(false);
     });
   });
+  describe("strings are vastly different", () => {
+    it("should return false", () => {
+      const result = editChecker("help", "save");
+      expect(result).toEqual(false);
+    });
+  });
 });
