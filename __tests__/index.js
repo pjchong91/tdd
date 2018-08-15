@@ -199,43 +199,78 @@
 //   });
 // });
 
-const lowestInteger = require("../lib/lowest-integer.js");
+// const lowestInteger = require("../lib/lowest-integer.js");
 
-describe("lowestInteger", () => {
-  describe("no integer possible between min-max of given array", () => {
-    it("should return the next highest integer", () => {
-      const result = lowestInteger([1, 2, 3]);
-      expect(result).toEqual(4);
+// describe("lowestInteger", () => {
+//   describe("no integer possible between min-max of given array", () => {
+//     it("should return the next highest integer", () => {
+//       const result = lowestInteger([1, 2, 3]);
+//       expect(result).toEqual(4);
+//     });
+//   });
+//   describe("integers in array are all the same", () => {
+//     it("should return the next highest integer", () => {
+//       const result = lowestInteger([1, 1, 1]);
+//       expect(result).toEqual(2);
+//     });
+//   });
+//   describe("lowest integer is below min of array range", () => {
+//     it("should return the minimum integer possible", () => {
+//       const result = lowestInteger([2, 10, 3]);
+//       expect(result).toEqual(1);
+//     });
+//   });
+//   describe("array contains a string", () => {
+//     it("should return 0", () => {
+//       const result = lowestInteger([10, "hello", 1, 5]);
+//       expect(result).toEqual(0);
+//     });
+//   });
+//   describe("input is not an array", () => {
+//     it("should return 0", () => {
+//       const result = lowestInteger("hello");
+//       expect(result).toEqual(0);
+//     });
+//   });
+//   describe("array contains a negative number", () => {
+//     it("should return the minimum positive integer", () => {
+//       const result = lowestInteger([5, -5, 10]);
+//       expect(result).toEqual(1);
+//     });
+//   });
+// });
+
+const editChecker = require("../lib/edit-checker.js");
+
+describe("editChecker", () => {
+  describe("strings differ by one deletion", () => {
+    it("should return true", () => {
+      const result = editChecker('pale','ple');
+      expect(result).toEqual(true);
     });
   });
-  describe("integers in array are all the same", () => {
-    it("should return the next highest integer", () => {
-      const result = lowestInteger([1, 1, 1]);
-      expect(result).toEqual(2);
+  describe("strings differ by one replacement", () => {
+    it("should return true", () => {
+      const result = editChecker('pale','bale');
+      expect(result).toEqual(true);
     });
   });
-  describe("lowest integer is below min of array range", () => {
-    it("should return the minimum integer possible", () => {
-      const result = lowestInteger([2, 10, 3]);
-      expect(result).toEqual(1);
+  describe("strings differ by two replacements", () => {
+    it("should return false", () => {
+      const result = editChecker('pale','bake');
+      expect(result).toEqual(false);
     });
   });
-  describe("array contains a string", () => {
+  describe("inputs are both strings", () => {
     it("should return 0", () => {
-      const result = lowestInteger([10, "hello", 1, 5]);
-      expect(result).toEqual(0);
+      const result = editChecker('pale','ple');
+      expect(result).toEqual(true);
     });
   });
-  describe("input is not an array", () => {
+  describe("inputs are not strings", () => {
     it("should return 0", () => {
-      const result = lowestInteger("hello");
+      const result = editChecker(1, [42]);
       expect(result).toEqual(0);
-    });
-  });
-  describe("array contains a negative number", () => {
-    it("should return the minimum positive integer", () => {
-      const result = lowestInteger([5, -5, 10]);
-      expect(result).toEqual(1);
     });
   });
 });
