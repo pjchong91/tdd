@@ -243,27 +243,27 @@
 const editChecker = require("../lib/edit-checker.js");
 
 describe("editChecker", () => {
-  describe("strings differ by one deletion", () => {
+  describe("strings differ by one insertion", () => {
     it("should return true", () => {
-      const result = editChecker('pale','ple');
+      const result = editChecker("pale", "ple");
       expect(result).toEqual(true);
     });
   });
   describe("strings differ by one replacement", () => {
     it("should return true", () => {
-      const result = editChecker('pale','bale');
+      const result = editChecker("pale", "bale");
       expect(result).toEqual(true);
     });
   });
   describe("strings differ by two replacements", () => {
     it("should return false", () => {
-      const result = editChecker('pale','bake');
+      const result = editChecker("pale", "bake");
       expect(result).toEqual(false);
     });
   });
-  describe("inputs are both strings", () => {
+  describe("strings differ by one deletion", () => {
     it("should return 0", () => {
-      const result = editChecker('pale','ple');
+      const result = editChecker("ple", "pale");
       expect(result).toEqual(true);
     });
   });
@@ -271,6 +271,30 @@ describe("editChecker", () => {
     it("should return 0", () => {
       const result = editChecker(1, [42]);
       expect(result).toEqual(0);
+    });
+  });
+  describe("strings are the same", () => {
+    it("should return true", () => {
+      const result = editChecker("hello", "hello");
+      expect(result).toEqual(true);
+    });
+  });
+  describe("string lengths differ by more than 2 characters", () => {
+    it("should return false", () => {
+      const result = editChecker("hello", "hellohi");
+      expect(result).toEqual(false);
+    });
+  });
+  describe("string has one replacement and one deletion", () => {
+    it("should return false", () => {
+      const result = editChecker("hell", "helpp");
+      expect(result).toEqual(false);
+    });
+  });
+  describe("string has one replacement and one insertion", () => {
+    it("should return false", () => {
+      const result = editChecker("helpp", "hell");
+      expect(result).toEqual(false);
     });
   });
 });
