@@ -194,7 +194,7 @@ describe("firstUnique", () => {
   describe("when string is all the same character", () => {
     it("should return undefined", () => {
       const result = firstUnique("fffffff");
-      expect(result).not.toBeUndefined();
+      expect(result).toBeUndefined();
     });
   });
 });
@@ -216,8 +216,14 @@ describe("firstUnique", () => {
 //   });
 //   describe("integers are out of order", () => {
 //     it("should return the minimum integer possible", () => {
-//       const result = lowestInteger([2, 6, 3]);
+//       const result = lowestInteger([2, 10, 3]);
 //       expect(result).toEqual(4);
+//     });
+//   });
+//   describe("integers are out of order", () => {
+//     it("should return the minimum integer possible", () => {
+//       const result = lowestInteger([10, 20, 1, 5]);
+//       expect(result).toEqual(2);
 //     });
 //   });
 // });
