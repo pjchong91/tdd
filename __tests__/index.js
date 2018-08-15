@@ -214,7 +214,7 @@ describe("lowestInteger", () => {
       expect(result).toEqual(2);
     });
   });
-  describe("integers are out of order", () => {
+  describe("lowest integer is below min of array range", () => {
     it("should return the minimum integer possible", () => {
       const result = lowestInteger([2, 10, 3]);
       expect(result).toEqual(1);
