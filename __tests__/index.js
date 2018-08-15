@@ -146,84 +146,96 @@
 //   });
 // });
 
-const firstUnique = require("../lib/first-unique.js");
+// const firstUnique = require("../lib/first-unique.js");
 
-describe("firstUnique", () => {
-  describe("string contains a unique character", () => {
-    it("unique character should not be repeated anywhere through the given string", () => {
-      const result = firstUnique("frof");
-      expect(result).toEqual("r");
-    });
-  });
-  describe("when string contains spaces, punctuation and capitalization", () => {
-    it("should ignore those and count letters", () => {
-      const result = firstUnique("aaa---!!bBb++c");
-      expect(result).toEqual("c");
-    });
-  });
-  describe("input at minimum is one letter", () => {
-    it("should return the letter if only one letter is given", () => {
-      const result = firstUnique("a");
-      expect(result).toEqual("a");
-    });
-  });
-  describe("input is an empty string", () => {
-    it("should return 0", () => {
-      const result = firstUnique("");
-      expect(result).toEqual(0);
-    });
-  });
-  describe("input is null", () => {
-    it("should indicate a string is required", () => {
-      const result = firstUnique(null);
-      expect(result).toEqual("Requires a string");
-    });
-  });
-  describe("input string contains numbers", () => {
-    it("should throw an error", () => {
-      const result = firstUnique("a7bcd");
-      expect(result).toEqual(0);
-    });
-  });
-  describe("input is not a string", () => {
-    it("should throw an error", () => {
-      const result = firstUnique(400);
-      expect(result).toEqual(0);
-    });
-  });
-  describe("when string is all the same character", () => {
-    it("should return undefined", () => {
-      const result = firstUnique("fffffff");
-      expect(result).toBeUndefined();
-    });
-  });
-});
-
-// const lowestInteger = require("../lib/lowest-integer.js");
-
-// describe("lowestInteger", () => {
-//   describe("no integer possible between min-max", () => {
-//     it("should return the next highest integer", () => {
-//       const result = lowestInteger([1, 2, 3]);
-//       expect(result).toEqual(4);
+// describe("firstUnique", () => {
+//   describe("string contains a unique character", () => {
+//     it("unique character should not be repeated anywhere through the given string", () => {
+//       const result = firstUnique("frof");
+//       expect(result).toEqual("r");
 //     });
 //   });
-//   describe("integers in array are all the same", () => {
-//     it("should return the next highest integer", () => {
-//       const result = lowestInteger([1, 1, 1]);
-//       expect(result).toEqual(2);
+//   describe("when string contains spaces, punctuation and capitalization", () => {
+//     it("should ignore those and count letters", () => {
+//       const result = firstUnique("aaa---!!bBb++c");
+//       expect(result).toEqual("c");
 //     });
 //   });
-//   describe("integers are out of order", () => {
-//     it("should return the minimum integer possible", () => {
-//       const result = lowestInteger([2, 10, 3]);
-//       expect(result).toEqual(4);
+//   describe("input at minimum is one letter", () => {
+//     it("should return the letter if only one letter is given", () => {
+//       const result = firstUnique("a");
+//       expect(result).toEqual("a");
 //     });
 //   });
-//   describe("integers are out of order", () => {
-//     it("should return the minimum integer possible", () => {
-//       const result = lowestInteger([10, 20, 1, 5]);
-//       expect(result).toEqual(2);
+//   describe("input is an empty string", () => {
+//     it("should return 0", () => {
+//       const result = firstUnique("");
+//       expect(result).toEqual(0);
+//     });
+//   });
+//   describe("input is null", () => {
+//     it("should indicate a string is required", () => {
+//       const result = firstUnique(null);
+//       expect(result).toEqual("Requires a string");
+//     });
+//   });
+//   describe("input string contains numbers", () => {
+//     it("should throw an error", () => {
+//       const result = firstUnique("a7bcd");
+//       expect(result).toEqual(0);
+//     });
+//   });
+//   describe("input is not a string", () => {
+//     it("should throw an error", () => {
+//       const result = firstUnique(400);
+//       expect(result).toEqual(0);
+//     });
+//   });
+//   describe("when string is all the same character", () => {
+//     it("should return undefined", () => {
+//       const result = firstUnique("fffffff");
+//       expect(result).toBeUndefined();
 //     });
 //   });
 // });
+
+const lowestInteger = require("../lib/lowest-integer.js");
+
+describe("lowestInteger", () => {
+  describe("no integer possible between min-max of given array", () => {
+    it("should return the next highest integer", () => {
+      const result = lowestInteger([1, 2, 3]);
+      expect(result).toEqual(4);
+    });
+  });
+  describe("integers in array are all the same", () => {
+    it("should return the next highest integer", () => {
+      const result = lowestInteger([1, 1, 1]);
+      expect(result).toEqual(2);
+    });
+  });
+  describe("integers are out of order", () => {
+    it("should return the minimum integer possible", () => {
+      const result = lowestInteger([2, 10, 3]);
+      expect(result).toEqual(1);
+    });
+  });
+  describe("array contains a string", () => {
+    it("should return 0", () => {
+      const result = lowestInteger([10, "hello", 1, 5]);
+      expect(result).toEqual(0);
+    });
+  });
+  describe("input is not an array", () => {
+    it("should return 0", () => {
+      const result = lowestInteger("hello");
+      expect(result).toEqual(0);
+    });
+  });
+  describe("array contains a negative number", () => {
+    it("should return the minimum positive integer", () => {
+      const result = lowestInteger([5, -5, 10]);
+      expect(result).toEqual(1);
+    });
+  });
+});
