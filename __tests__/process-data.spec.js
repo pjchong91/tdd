@@ -69,15 +69,14 @@ describe("Process Data", () => {
     });
     describe("Experience", () => {
       it("should return the average satisfaction for all years of experience", () => {
-        expect(processedData.experience[1].satisfaction).toEqual(10);
-        expect(processedData.experience[2].satisfaction).toEqual(10);
-        expect(processedData.experience[3].satisfaction).toEqual(10);
+        expect(processedData.experience[2].satisfaction).toEqual(4);
+        expect(processedData.experience[3].satisfaction).toEqual(2);
       });
     });
     describe("Demographics", () => {
       it("should return average age and satisfaction for the cohort ", () => {
-        expect(processedData.demographics.averageAge).toEqual(10);
-        expect(processedData.demographics.satisfaction).toEqual(10);
+        expect(processedData.demographics.averageAge).toEqual("32.7");
+        expect(processedData.demographics.satisfaction).toEqual("2.7");
       });
     });
   });
