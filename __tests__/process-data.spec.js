@@ -58,12 +58,12 @@ describe("Process Data", () => {
       });
       it("should calculate the average satisfaction for passing students", () => {
         expect(processedData.projects["project1"].passed.satisfaction).toEqual(
-          10
+          2
         );
       });
       it("should calculate the average satisfaction for failing students", () => {
         expect(processedData.projects["project1"].failed.satisfaction).toEqual(
-          10
+          3
         );
       });
     });
